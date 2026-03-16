@@ -3,74 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Your Non Profit</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--primary:#6C63FF;
+--bg:#f5f7fb;
+--text:#222;
+--glass:rgba(255,255,255,0.6);
+}
+
+.dark{
+--bg:#0f1115;
+--text:#f5f5f5;
+--glass:rgba(255,255,255,0.08);
+}
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
-background:#f8f9fb;
-color:#333;
+background:var(--bg);
+color:var(--text);
+transition:0.3s;
 }
 
-/* NAVBAR */
+/* NAV */
 
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px 8%;
-background:white;
-box-shadow:0 4px 10px rgba(0,0,0,0.05);
-position:sticky;
-top:0;
+position:fixed;
+width:100%;
+backdrop-filter:blur(10px);
+background:var(--glass);
+z-index:1000;
 }
 
-nav h1{
-color:#4a6cf7;
-font-weight:600;
+nav h2{
+font-weight:700;
 }
 
 nav ul{
 display:flex;
-gap:25px;
+gap:30px;
 list-style:none;
 }
 
 nav a{
 text-decoration:none;
-color:#333;
+color:var(--text);
 font-weight:500;
-transition:0.3s;
 }
 
-nav a:hover{
-color:#4a6cf7;
+.toggle{
+cursor:pointer;
+padding:6px 12px;
+border-radius:20px;
+background:var(--primary);
+color:white;
+font-size:14px;
 }
 
 /* HERO */
 
 .hero{
-height:90vh;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 padding:0 10%;
-background:linear-gradient(120deg,#4a6cf7,#7c3aed);
+background:linear-gradient(120deg,#6C63FF,#9b5cff);
 color:white;
 }
 
-.hero h2{
-font-size:3rem;
+.hero h1{
+font-size:3.5rem;
 margin-bottom:20px;
 }
 
@@ -78,47 +97,51 @@ margin-bottom:20px;
 max-width:600px;
 margin:auto;
 margin-bottom:30px;
+opacity:0.9;
 }
 
 .btn{
-padding:12px 28px;
+display:inline-block;
+padding:14px 32px;
+border-radius:40px;
 background:white;
-color:#4a6cf7;
-border-radius:30px;
+color:#6C63FF;
 text-decoration:none;
 font-weight:600;
 transition:0.3s;
 }
 
 .btn:hover{
-transform:translateY(-3px);
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
+transform:translateY(-4px);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* ABOUT */
+/* SECTION */
 
 .section{
-padding:80px 10%;
+padding:100px 10%;
 text-align:center;
 }
 
-.section h3{
-font-size:2rem;
-margin-bottom:20px;
+.section h2{
+font-size:2.3rem;
+margin-bottom:15px;
 }
+
+/* CARDS */
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-margin-top:40px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:50px;
 }
 
 .card{
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
+background:var(--glass);
+backdrop-filter:blur(10px);
+padding:35px;
+border-radius:16px;
 transition:0.3s;
 }
 
@@ -126,12 +149,49 @@ transition:0.3s;
 transform:translateY(-8px);
 }
 
+/* IMPACT */
+
+.impact{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:40px;
+margin-top:40px;
+}
+
+.stat{
+font-size:2rem;
+font-weight:700;
+color:var(--primary);
+}
+
+/* TEAM */
+
+.team{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.member{
+background:var(--glass);
+padding:30px;
+border-radius:14px;
+}
+
+.member img{
+width:80px;
+height:80px;
+border-radius:50%;
+margin-bottom:10px;
+}
+
 /* CTA */
 
 .cta{
-background:#4a6cf7;
+padding:90px 10%;
+background:linear-gradient(120deg,#6C63FF,#9b5cff);
 color:white;
-padding:70px 10%;
 text-align:center;
 }
 
@@ -139,9 +199,9 @@ text-align:center;
 margin-top:20px;
 display:inline-block;
 background:white;
-color:#4a6cf7;
-padding:12px 28px;
-border-radius:30px;
+color:#6C63FF;
+padding:14px 30px;
+border-radius:40px;
 text-decoration:none;
 font-weight:600;
 }
@@ -149,10 +209,22 @@ font-weight:600;
 /* FOOTER */
 
 footer{
-padding:30px;
 text-align:center;
-background:#111;
-color:#aaa;
+padding:40px;
+opacity:0.7;
+}
+
+/* ANIMATION */
+
+.hidden{
+opacity:0;
+transform:translateY(30px);
+transition:all 0.8s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
@@ -161,48 +233,115 @@ color:#aaa;
 <body>
 
 <nav>
-<h1>YourOrg</h1>
+
+<h2>Collabrium</h2>
+
 <ul>
-<li><a href="#">Home</a></li>
 <li><a href="#">Mission</a></li>
 <li><a href="#">Impact</a></li>
-<li><a href="#">Join</a></li>
+<li><a href="#">Team</a></li>
 </ul>
+
+<div class="toggle" onclick="toggleMode()">Dark</div>
+
 </nav>
 
 <section class="hero">
 
 <div>
-<h2>Changing The World Together</h2>
+
+<h1>Building Change Together</h1>
+
 <p>
-We are a youth driven non-profit dedicated to creating real impact through collaboration, education, and community action.
+A youth powered non-profit building communities, empowering education,
+and creating real world impact.
 </p>
 
-<a href="#" class="btn">Join Our Mission</a>
+<a class="btn" href="YOUR_GOOGLE_FORM_LINK">Become a Volunteer</a>
 
 </div>
 
 </section>
 
-<section class="section">
+<section class="section hidden">
 
-<h3>What We Do</h3>
+<h2>Our Mission</h2>
+
+<p>We believe collaboration can solve the world's most meaningful problems.</p>
 
 <div class="cards">
 
 <div class="card">
+<h3>Community</h3>
+<p>Connecting passionate volunteers and change makers.</p>
+</div>
+
+<div class="card">
+<h3>Education</h3>
+<p>Empowering youth through knowledge and mentorship.</p>
+</div>
+
+<div class="card">
+<h3>Innovation</h3>
+<p>Using creative thinking and technology for impact.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section hidden">
+
+<h2>Our Impact</h2>
+
+<div class="impact">
+
+<div>
+<div class="stat">500+</div>
+<p>Students Helped</p>
+</div>
+
+<div>
+<div class="stat">120+</div>
+<p>Volunteers</p>
+</div>
+
+<div>
+<div class="stat">35</div>
+<p>Projects</p>
+</div>
+
+<div>
+<div class="stat">10</div>
+<p>Cities Reached</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section hidden">
+
+<h2>Our Team</h2>
+
+<div class="team">
+
+<div class="member">
+<img src="https://i.pravatar.cc/100?img=1">
+<h4>Founder</h4>
+<p>Vision & Strategy</p>
+</div>
+
+<div class="member">
+<img src="https://i.pravatar.cc/100?img=2">
+<h4>Operations</h4>
+<p>Project Management</p>
+</div>
+
+<div class="member">
+<img src="https://i.pravatar.cc/100?img=3">
 <h4>Community</h4>
-<p>Connecting volunteers and changemakers to create meaningful local impact.</p>
-</div>
-
-<div class="card">
-<h4>Education</h4>
-<p>Providing knowledge and resources to empower the next generation.</p>
-</div>
-
-<div class="card">
-<h4>Innovation</h4>
-<p>Using creativity and technology to solve real world problems.</p>
+<p>Volunteer Engagement</p>
 </div>
 
 </div>
@@ -211,18 +350,43 @@ We are a youth driven non-profit dedicated to creating real impact through colla
 
 <section class="cta">
 
-<h3>Become a Volunteer</h3>
-<p>Join our growing community of people working to build a better future.</p>
+<h2>Join The Movement</h2>
 
-<a href="#">Get Started</a>
+<p>Be part of something bigger than yourself.</p>
+
+<a href="YOUR_GOOGLE_FORM_LINK">Volunteer Now</a>
 
 </section>
 
 <footer>
 
-<p>© 2026 YourOrg • Built with purpose</p>
+<p>© 2026 Collabrium • Built with purpose</p>
 
 </footer>
+
+<script>
+
+/* DARK MODE */
+
+function toggleMode(){
+document.body.classList.toggle("dark")
+}
+
+/* SCROLL ANIMATION */
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+
+document.querySelectorAll(".hidden").forEach(el=>{
+observer.observe(el)
+})
+
+</script>
 
 </body>
 </html>
